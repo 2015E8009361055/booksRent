@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bookname:</strong>
+  <%= @book.bookname %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @book.author %>
+</p>
+
+<p>
+  <strong>Press:</strong>
+  <%= @book.press %>
+</p>
+
+<p>
+  <strong>Isbn:</strong>
+  <%= @book.isbn %>
+</p>
+
+<p>
+  <strong>Renter:</strong>
+  <%= @book.renter_id %>
+</p>
+
+<p>
+  <strong>Borrower:</strong>
+  <%= @book.borrower %>
+</p>
+
+<p>
+  <strong>Explanation:</strong>
+  <%= @book.explanation %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @book.status %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @book.type %>
+</p>
+
+<p>
+  <strong>Extend:</strong>
+  <%= @book.extend %>
+</p>
+
+<%= link_to '重新编辑', edit_book_path(@book) %> |
+<%= link_to '查看所有图书', books_path %>

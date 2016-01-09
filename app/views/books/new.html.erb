@@ -1,0 +1,53 @@
+<h1发布一本新的图书</h1>
+<!--<%= render 'form' %>  这条语句的意思是，调用My_books-_form.html.erb这个表单界面-->
+<div class="row">
+   
+   
+   <div class="col-md-3" style="background-color: #dedef8;height:200px;">
+         <p>这里用来上传图片</p>
+         <%= link_to image_tag("rails.png", alt: "Rails logo"),'http://rubyonrails.org/'%>
+         
+         
+         <div class="gravatar_edit">
+           <a href="http://gravatar.com/emails" target="_blank">change</a>
+           </div>
+           
+           
+           
+           </div>
+      
+      
+  <div class="col-md-6">
+ <%= form_for(@book) do |f| %>
+        <%= f.label "书  名" %>
+        <%= f.text_field :bookname %>
+        <%= f.label "作  者" %>
+        <%= f.text_field :author %>
+         <%= f.label "出版社" %>
+         <%= f.text_field :press %>
+         
+         
+         
+         
+         
+         
+        <%= f.label "图书ISBN" %>
+         <%= f.text_field :isbn %>
+         
+        <%= f.label "推荐语" %>
+        <div class=" field" style="height:100px;margin-top:10px">
+         <%=f.text_area :explanation ,placeholder:"您可以在此编辑推荐语..."%>
+       </div>
+        <%= f.submit "提交信息", class: "btn btn-primary" %>
+        
+        
+
+
+    <% end %>
+  </div>
+</div>
+<div class="row">
+<div class="col-md-2">
+  <%=link_to "上传图片", bookup_path, class: "btn btn-lg btn-primary" %>
+</div>
+</div>
