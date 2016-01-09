@@ -5,6 +5,10 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
+    
+    # @books.each do |t|
+    #   t.destroy
+    # end   这是一段黑暗代码，测试阶段数据库如果写入了很多乱七八糟的东西看着不爽，可它清空数据库
   end
 
   # GET /books/1
@@ -24,10 +28,7 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    # @book = Book.new(book_params)
-    a= :booknam22e.id2name
-    @book = Book.create(bookname: a,isbn: :booknam22e)
-   
+     @book = Book.new(book_params)
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
