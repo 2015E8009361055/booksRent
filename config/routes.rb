@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
   resources :books
   get 'sessions/new'
@@ -24,6 +25,9 @@ Rails.application.routes.draw do
   match '/booklist', to: 'books#booklist', via:'get'
 
   resources :users
+  
+  #add account_activations,
+  resources :account_activations, only: [:edit]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

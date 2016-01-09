@@ -1,0 +1,3 @@
+      invoke  active_record
+      create    db/migrate/20160107155609_add_activation_to_users.rb
+Running via Spring preloader in process 12243
