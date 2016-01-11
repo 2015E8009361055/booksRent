@@ -18,9 +18,11 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
+    logged_in_user
     @book = Book.new
   end
   def borrow
+     logged_in_user
     @book = Book.new
    
   end
