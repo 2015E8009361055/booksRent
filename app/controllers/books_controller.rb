@@ -5,6 +5,16 @@ class BooksController < ApplicationController
  def index
      @books=Book.all
  end
+   # GET /books/new
+  def new
+    logged_in_user
+    @book = Book.new
+  end
+  def borrow
+     logged_in_user
+    @book = Book.new
+   
+  end
 def edit
     @book = current_user.books.find_by(id: params[:id])
 end
@@ -36,6 +46,9 @@ def update
 end
   
 private
+    def set_book
+      @book = Book.find(params[:id])
+    end
 def book_params
 
  params.require(:book).permit(:bookname, :author, :press, :isbn, :user_id, :borrower, :explanation, :status, :booktype, :extend)
