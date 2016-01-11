@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bookname:</strong>
+  <%= @book.bookname %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @book.author %>
+</p>
+
+<p>
+  <strong>Press:</strong>
+  <%= @book.press %>
+</p>
+
+<p>
+  <strong>Isbn:</strong>
+  <%= @book.isbn %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @book.user %>
+</p>
+
+<p>
+  <strong>Borrower:</strong>
+  <%= @book.borrower %>
+</p>
+
+<p>
+  <strong>Explanation:</strong>
+  <%= @book.explanation %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @book.status %>
+</p>
+
+<p>
+  <strong>Booktype:</strong>
+  <%= @book.booktype %>
+</p>
+
+<p>
+  <strong>Extend:</strong>
+  <%= @book.extend %>
+</p>
+
+<%= link_to '修改信息', edit_book_path(@book),class: "btn btn-primary"  %> 
+<%= link_to '返回', home_path,class: "btn btn-primary" %>
