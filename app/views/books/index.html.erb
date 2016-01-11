@@ -41,6 +41,7 @@
       </a>
       <a href="#" class="list-group-item">
         <table  class="table">
+           <th>封面</th> 
          <th>书名</th> 
          <th>作者</th>
          <th>出版社</th> 
@@ -51,6 +52,12 @@
          <th>操作2</th>
          <th>操作3</th> 
           <tbody>
+       
+            <td>
+              <span class="content">
+<%= image_tag book.picture.url if book.picture? %>
+</span>
+</td>
         <td><%= book.bookname %></td>
         <td><%= book.author %></td>
         <td><%= book.press %></td>

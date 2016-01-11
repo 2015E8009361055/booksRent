@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destory'
   match '/bookup', to: 'books#new', via:'get'
+    match '/bookborrow', to: 'books#borrow', via:'get'
   match '/booklist', to: 'books#booklist', via:'get'
 
   resources :users

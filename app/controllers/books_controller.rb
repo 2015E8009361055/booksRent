@@ -20,7 +20,10 @@ class BooksController < ApplicationController
   def new
     @book = Book.new
   end
-
+  def borrow
+    @book = Book.new
+   
+  end
   # GET /books/1/edit
   def edit
   end
@@ -29,8 +32,14 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
      @book = Book.new(book_params)
+     if @book.isbn==nil
+       flash[:success] = "您的图书求借信息发布成功！"
+       redirect_to root_path
+       return
+     end
     respond_to do |format|
       if @book.save
+        
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
       else
         format.html { render :new }
@@ -68,6 +77,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:bookname, :author, :press, :isbn, :renter_id, :borrower, :explanation, :status, :type, :extend)
+      params.require(:book).permit(:bookname, :author, :press, :isbn, :renter_id, :borrower, :explanation, :status, :type, :extend,:picture)
     end
 end
