@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   get 'home' => 'static_pages#home'
+   get 'bookborrow' => 'books#borrow'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   resources :users do
