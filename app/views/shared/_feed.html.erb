@@ -1,8 +1,16 @@
 <!--按照books-下面的_book.html.erb控制的格式显示-->
 
 <% if @feed_items.any? %>
+<h3>用户已发布图书列表</h3>
+<ol class="books"> 
+<%  @publish=@feed_items.where(status:"图书未借出") %>
+<%= render @publish %>
+</ol>
+
+<h3>用户已求借图书列表</h3>
 <ol class="books">
-<%= render @feed_items %>
+<%  @wantborrow=@feed_items.where(status:"发布信息中") %>
+<%= render @wantborrow %>
 </ol>
 <%= will_paginate @feed_items %>
 <% end %>

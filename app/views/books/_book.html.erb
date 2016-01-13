@@ -28,17 +28,23 @@
     color: red;
   }
 </style>
-
 <body>
  
+ <% if book.status=="发布信息中" %>
+ 
+ <% @tableflag=1 %>
+ <% end %>
   <div class="list-group">
+    
     <a href="#" class="list-group-item active">
       <h4 class="list-group-item-heading">
-         <<<%=book.bookname %>>>的详细信息
-      </h4>
+         《<%= book.bookname %>》的详细信息
+      </h4> 
       </a>
       <a href="#" class="list-group-item">
         <table  class="table">
+          
+<% if @tableflag!=1 %>
          <th>书名</th> 
          <th>作者</th>
          <th>出版社</th> 
@@ -56,7 +62,7 @@
         <td><%= book.status %></td>
         <td><%= book.booktype %></td>
           <td>
-        <%=link_to '图书详情   ', book %>
+        <%=link_to '发布详情   ', book %>
           </td>
           <td>
         <%=link_to '修改信息   ', edit_book_path(book) %>
@@ -64,6 +70,31 @@
           <td>
         <%=link_to '删 除   ', book, method: :delete, data: { confirm: '图书交换系统提示：您真的确认么？' } %>
           </td>
+          
+<% else %>
+         <th>书名</th> 
+         <th>作者</th>
+         <th>出版社</th> 
+         <th>ISBN</th> 
+         <th>状态</th>
+         <th>分类</th> 
+         <th>操作1</th> 
+         <th>操作2</th> 
+          <tbody>
+        <td><%= book.bookname %></td>
+        <td><%= book.author %></td>
+        <td><%= book.press %></td>
+        <td><%= book.isbn %></td>
+        <td><%= book.status %></td>
+        <td><%= book.booktype %></td>
+          <td>
+        <%=link_to '求借详情   ', book %>
+          </td>
+          <td>
+        <%=link_to '删 除   ', book, method: :delete, data: { confirm: '图书交换系统提示：您真的确认么？' } %>
+          </td>
+          
+ <% end %>
 		</tbody>
 </table> 
 </a>
