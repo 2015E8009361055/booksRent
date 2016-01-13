@@ -42,31 +42,33 @@ def forget
 update_attribute(:remember_digest, nil)
 end
 
-# 激活账户
-def activate
-update_attribute(:activated, true)
-update_attribute(:activated_at, Time.zone.now)
-end
+  # 激活账户
+  def activate
+    update_attribute(:activated, true)
+    update_attribute(:activated_at, Time.zone.now)
+  end
 
-# 发送激活邮件
-def send_activation_email
-UserMailer.account_activation(self).deliver_now
-end
+  # 发送激活邮件
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
 
-# 设置密码重设相关的属性
-def create_reset_digest
-self.reset_token = User.new_token
-update_attribute(:reset_digest, User.digest(reset_token))
-update_attribute(:reset_sent_at, Time.zone.now)
-end
-# 发送密码重设邮件
-def send_password_reset_email
-UserMailer.password_reset(self).deliver_now
-end
-# 如果密码重设超时失效了，返回 true
-def password_reset_expired?
-reset_sent_at < 2.hours.ago
-end
+  # 设置密码重设相关的属性
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest, User.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+  # 发送密码重设邮件
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
+  # 如果密码重设超时失效了，返回 true
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
 
 # 实现动态流原型
 # 完整的实现参见第 12 章
@@ -76,13 +78,14 @@ Book.where("user_id = ?", id)
 end
 
 private
-# 把电子邮件地址转换成小写
-def downcase_email
-self.email = email.downcase
-end
-# 创建并赋值激活令牌和摘要
-def create_activation_digest
-self.activation_token = User.new_token
-self.activation_digest = User.digest(activation_token)
-end
+  # 把电子邮件地址转换成小写
+  def downcase_email
+    self.email = email.downcase
+  end
+
+  # 创建并赋值激活令牌和摘要
+  def create_activation_digest
+    self.activation_token = User.new_token
+    self.activation_digest = User.digest(activation_token)
+  end
 end
