@@ -10,9 +10,16 @@
 </aside>
 <div class="col-md-8">
 <% if @user.books.any? %>
-<h3>用户图书 (<%= @user.books.count %>)</h3>
+
+<%  @publish=@books.where(status:"图书未借出") %>
+<h3>用户已发布图书，总共(<%= @publish.count %>)本</h3>
 <ol class="books">
-<%= render @books %>
+<%= render @publish %> 
+</ol>
+<%  @wantborrow=@books.where(status:"发布信息中") %>
+<h3>用户已求借图书，总共(<%= @wantborrow.count %>)</h3>
+<ol class="books">
+<%= render @wantborrow %> 
 </ol>
 <%= will_paginate @books %>
 <% end %>

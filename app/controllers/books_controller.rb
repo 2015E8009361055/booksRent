@@ -9,6 +9,7 @@
   def new
     logged_in_user
     @book = Book.new
+    $flag=0
   end
   def borrow  #借书动作控制
     logged_in_user
@@ -19,6 +20,7 @@
     # @books.each do |variable|
     #     variable.destroy
     # end
+    # 用来清空数据库，勿轻易释放
   end
   def edit
     @book = current_user.books.find_by(id: params[:id])
