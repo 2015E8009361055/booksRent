@@ -64,7 +64,7 @@ end
   end
   def book_params
 
-    params.require(:book).permit(:bookname, :author, :press, :isbn, :user_id, :borrower, :explanation, :status, :booktype, :extend)
+    params.require(:book).permit(:bookname, :author, :press, :isbn, :user_id, :borrower, :explanation, :status, :booktype, :extend,:picture)
   end
   def correct_user
     @book = current_user.books.find_by(id: params[:id])

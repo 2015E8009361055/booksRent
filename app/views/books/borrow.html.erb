@@ -18,11 +18,15 @@
            
            </div>
       
-      
-  <div class="col-md-6">
- <%= form_for(@book) do |f| %>
-        <%= f.label "书  名" %>
-        <%= f.text_field :bookname %>
+   <div class="col-md-6 ">
+ 
+   <%= form_for(@book, html: { multipart: true }) do |f| %>
+    <%=f .label "书  名" %>
+     <%=f .text_field :bookname %>
+     <%=f .label "封 面" %>
+       <span class="picture">
+<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+</span>
         <%= f.label "作  者" %>
         <%= f.text_field :author %>
          <%= f.label "出版社" %>

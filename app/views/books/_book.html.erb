@@ -3,7 +3,6 @@
 </p>
 
 <html>
-
 <style type="text/css">
   p {
     font-size: 34px;
@@ -28,6 +27,7 @@
     color: red;
   }
 </style>
+
 <body>
  
  <% if book.status=="发布信息中" %>
@@ -45,6 +45,7 @@
         <table  class="table">
           
 <% if @tableflag!=1 %>
+          <th>封面</th> 
          <th>书名</th> 
          <th>作者</th>
          <th>出版社</th> 
@@ -55,6 +56,12 @@
          <th>操作2</th>
          <th>操作3</th> 
           <tbody>
+        <td>
+            <span class="content">
+
+<%= image_tag book.picture.url if book.picture? %>
+</span>
+</td>
         <td><%= book.bookname %></td>
         <td><%= book.author %></td>
         <td><%= book.press %></td>
@@ -72,6 +79,7 @@
           </td>
           
 <% else %>
+         <th>封面</th> 
          <th>书名</th> 
          <th>作者</th>
          <th>出版社</th> 
@@ -81,6 +89,10 @@
          <th>操作1</th> 
          <th>操作2</th> 
           <tbody>
+             <td><span class="content">
+
+<%= image_tag book.picture.url if book.picture? %>
+</span></td>
         <td><%= book.bookname %></td>
         <td><%= book.author %></td>
         <td><%= book.press %></td>

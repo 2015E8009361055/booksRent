@@ -2,7 +2,8 @@
 
 class PictureUploader < CarrierWave::Uploader::Base
 include CarrierWave::MiniMagick
-process resize_to_limit: [400, 400]
+#这里改变尺寸大小可以限制上传的图片显示的大小
+process resize_to_limit: [200, 200]
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
